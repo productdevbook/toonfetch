@@ -44,7 +44,6 @@
   ],
   "scripts": {
     "build": "pnpm convert:toon && pnpm update:exports && tsdown && pnpm copy:types && pnpm add:refs",
-    "automd": "automd",
     "generate:types": "tsx scripts/generate-types.ts",
     "update:exports": "tsx scripts/update-exports.ts",
     "copy:types": "tsx scripts/copy-types.ts",
@@ -57,7 +56,7 @@
     "test:coverage": "vitest run --coverage",
     "test:ui": "vitest --ui",
     "test:types": "tsc --noEmit",
-    "release": "bumpp -r"
+    "release": "pnpm build && pnpm bumpp && pnpm publish --no-git-checks --access public"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.20.2",
@@ -68,7 +67,6 @@
     "@antfu/eslint-config": "^6.2.0",
     "@toon-format/cli": "^0.7.0",
     "@types/node": "^24.9.2",
-    "automd": "^0.4.2",
     "bumpp": "^10.3.1",
     "eslint": "^9.39.0",
     "openapi-typescript": "^7.10.1",
