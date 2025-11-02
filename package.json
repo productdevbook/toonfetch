@@ -30,6 +30,10 @@
     "claude"
   ],
   "exports": {
+    "./digitalocean": {
+      "types": "./dist/digitalocean.d.ts",
+      "import": "./dist/digitalocean.js"
+    },
     "./hetzner": {
       "types": "./dist/hetzner.d.ts",
       "import": "./dist/hetzner.js"

@@ -11,6 +11,8 @@ export default antfu(
       'playground',
       '**.toon',
       'openapi-specs/**/*.json',
+      'openapi-specs/**/*.yaml',
+      'openapi-specs/**/*.yml',
     ],
   },
   {

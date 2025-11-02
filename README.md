@@ -108,6 +108,7 @@ ToonFetch currently includes:
 
 | API | Description | Endpoints | Import |
 |-----|-------------|-----------|--------|
+| **DigitalOcean** | Complete cloud platform API | 200+ | `toonfetch/digitalocean` |
 | **Hetzner Cloud** | Cloud infrastructure management | 100+ | `toonfetch/hetzner` |
 | **Ory Kratos** | Identity & user management | 50+ | `toonfetch/ory` |
 | **Ory Hydra** | OAuth 2.0 & OpenID Connect | 40+ | `toonfetch/ory` |
