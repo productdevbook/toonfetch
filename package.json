@@ -27,7 +27,10 @@
     "convert:toon": "tsx scripts/convert-to-toon.ts",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "test": "pnpm -r test",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "test:ui": "vitest --ui",
     "test:types": "tsc --noEmit",
     "release": "bumpp -r"
   },

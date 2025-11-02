@@ -10,24 +10,65 @@ import {
 } from '@modelcontextprotocol/sdk/types.js'
 import { decode } from '@toon-format/toon'
 
+/**
+ * Represents a loaded API specification.
+ */
 interface ApiSpec {
+  /** Unique identifier for the API (e.g., "ory/kratos") */
   name: string
+  /** File path to the .toon file */
   path: string
+  /** Decoded OpenAPI specification object */
   spec: any
 }
 
+/**
+ * Represents a generated TypeScript code example.
+ */
 interface CodeExample {
+  /** Import statements needed for the example */
   imports: string
+  /** Client setup code */
   setup: string
+  /** API request code */
   usage: string
+  /** Complete executable example including all parts */
   fullExample: string
 }
 
+/**
+ * MCP (Model Context Protocol) server for ToonFetch.
+ *
+ * Provides AI assistants with tools to introspect OpenAPI specifications,
+ * search endpoints, and generate TypeScript code examples using the toonfetch library.
+ *
+ * The server loads OpenAPI specs in TOON format from the openapi-specs directory
+ * and exposes 7 MCP tools for API exploration and code generation.
+ *
+ * @example
+ * ```typescript
+ * // The server is started automatically when run as a script
+ * // Configure in Claude Desktop:
+ * {
+ *   "mcpServers": {
+ *     "toonfetch": {
+ *       "command": "node",
+ *       "args": ["/path/to/dist/mcp-server.js"]
+ *     }
+ *   }
+ * }
+ * ```
+ */
 class ToonFetchMCPServer {
   private server: Server
   private specs: Map<string, ApiSpec> = new Map()
   private specsDir: string
 
+  /**
+   * Initialize the MCP server and load API specifications.
+   *
+   * Automatically discovers and loads all .toon files from the openapi-specs directory.
+   */
   constructor() {
     this.server = new Server(
       {
@@ -53,6 +94,14 @@ class ToonFetchMCPServer {
     this.setupHandlers()
   }
 
+  /**
+   * Recursively scan the openapi-specs directory and load all .toon files.
+   *
+   * Converts TOON-encoded files back to OpenAPI JSON and stores them in the specs map.
+   * Errors during loading of individual files are logged but don't prevent server startup.
+   *
+   * @private
+   */
   private loadSpecs() {
     try {
       // Scan openapi-specs directory for .toon files
@@ -94,11 +143,43 @@ class ToonFetchMCPServer {
     }
   }
 
+  /**
+   * Extract the service name from an API identifier.
+   *
+   * @param apiName - Full API identifier (e.g., "ory/kratos")
+   * @returns Service name (e.g., "kratos")
+   * @private
+   *
+   * @example
+   * ```typescript
+   * getApiServiceName("ory/kratos") // returns "kratos"
+   * getApiServiceName("ory/hydra") // returns "hydra"
+   * ```
+   */
   private getApiServiceName(apiName: string): string {
     // Convert "ory/kratos" to "kratos", "ory/hydra" to "hydra"
     return apiName.split('/').pop() || apiName
   }
 
+  /**
+   * Generate a realistic example value based on OpenAPI schema definition.
+   *
+   * Uses schema type, format, and property name to generate appropriate example values.
+   * Handles primitive types, arrays, objects, and nested schemas.
+   *
+   * @param schema - OpenAPI schema definition
+   * @param propertyName - Optional property name for context-aware value generation
+   * @returns Generated example value matching the schema type
+   * @private
+   *
+   * @example
+   * ```typescript
+   * generateExampleValue({ type: 'string', format: 'email' }) // "user@example.com"
+   * generateExampleValue({ type: 'string', format: 'uuid' }) // "550e8400-e29b-41d4-a716-446655440000"
+   * generateExampleValue({ type: 'number' }) // 10
+   * generateExampleValue({ type: 'boolean' }) // true
+   * ```
+   */
   private generateExampleValue(schema: any, propertyName?: string): any {
     if (!schema)
       return undefined
@@ -151,6 +232,31 @@ class ToonFetchMCPServer {
     }
   }
 
+  /**
+   * Generate a complete TypeScript code example for an API endpoint.
+   *
+   * Creates copy-paste-ready code including imports, client setup, and request execution.
+   * Automatically generates realistic example values for path parameters, query parameters,
+   * and request bodies based on the OpenAPI specification.
+   *
+   * @param apiName - Full API identifier (e.g., "ory/kratos")
+   * @param path - Endpoint path (e.g., "/admin/identities")
+   * @param method - HTTP method (e.g., "get", "post")
+   * @param operation - OpenAPI operation object from the spec
+   * @returns CodeExample object with separate parts and full example
+   * @private
+   *
+   * @example
+   * ```typescript
+   * const example = generateCodeExample(
+   *   "ory/kratos",
+   *   "/admin/identities",
+   *   "post",
+   *   operationObject
+   * )
+   * console.log(example.fullExample) // Complete executable TypeScript code
+   * ```
+   */
   private generateCodeExample(apiName: string, path: string, method: string, operation: any): CodeExample {
     const serviceName = this.getApiServiceName(apiName)
     const methodUpper = method.toUpperCase()
@@ -240,6 +346,17 @@ ${operation.operationId || 'makeRequest'}().catch(console.error)`
     }
   }
 
+  /**
+   * Generate a quickstart guide for an API with common operations.
+   *
+   * Creates a complete guide including installation, setup, and up to 3 example operations
+   * (GET and POST requests) to help users get started quickly.
+   *
+   * @param apiName - Full API identifier (e.g., "ory/kratos")
+   * @param spec - Complete OpenAPI specification object
+   * @returns Markdown-formatted quickstart guide
+   * @private
+   */
   private generateQuickstart(apiName: string, spec: any): string {
     const serviceName = this.getApiServiceName(apiName)
     const baseUrlExample = apiName.includes('kratos')
@@ -278,6 +395,20 @@ ${examples}
 `
   }
 
+  /**
+   * Configure MCP request handlers for tool listing and tool execution.
+   *
+   * Sets up handlers for:
+   * - list_apis: List all available API specifications
+   * - get_api_info: Get API metadata
+   * - search_endpoints: Search endpoints by path/method/description
+   * - get_endpoint_details: Get detailed endpoint information with code examples
+   * - get_schema_details: Get schema/model definitions
+   * - generate_code_example: Generate TypeScript code examples
+   * - get_quickstart: Generate quickstart guides
+   *
+   * @private
+   */
   private setupHandlers() {
     // List available tools
     this.server.setRequestHandler(ListToolsRequestSchema, async () => ({
@@ -679,6 +810,20 @@ ${quickstart}
     }
   }
 
+  /**
+   * Start the MCP server with stdio transport.
+   *
+   * Connects the server to stdio transport for communication with MCP clients
+   * (such as Claude Desktop). The server will remain running until the process is terminated.
+   *
+   * @throws Error if the server fails to start or connection fails
+   *
+   * @example
+   * ```typescript
+   * const server = new ToonFetchMCPServer()
+   * await server.run()
+   * ```
+   */
   async run() {
     const transport = new StdioServerTransport()
     await this.server.connect(transport)
