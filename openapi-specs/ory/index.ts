@@ -1,5 +1,16 @@
 import { createClient as apifulCreateClient, OpenAPIBuilder } from 'apiful'
 
+export type {
+  OryHydra,
+  OryHydraApiMethods,
+  OryHydraApiPaths,
+  OryHydraModel,
+  OryKaratos,
+  OryKaratosApiMethods,
+  OryKaratosApiPaths,
+  OryKaratosModel,
+} from 'apiful/schema'
+
 /**
  * Create a type-safe API client for Ory services.
  *

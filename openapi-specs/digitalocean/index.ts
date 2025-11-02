@@ -1,5 +1,7 @@
 import { createClient as apifulCreateClient, OpenAPIBuilder } from 'apiful'
 
+export type { DigitalOcean, DigitalOceanApiMethods, DigitalOceanApiPaths, DigitalOceanModel } from 'apiful/schema'
+
 /**
  * Create a type-safe API client for DigitalOcean.
  *

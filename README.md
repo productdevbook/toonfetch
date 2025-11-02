@@ -98,6 +98,49 @@ console.log(servers.servers)  // ✅ Autocomplete works
 
 See [Supported APIs](#supported-apis) for all available services.
 
+### Type Helpers for Advanced Type Safety
+
+Extract specific types from endpoints for maximum type safety:
+
+```typescript
+import type { HetznerCloud } from 'toonfetch/hetzner'
+
+// Extract request body type
+type CreateServerBody = HetznerCloud<'/servers', 'post'>['request']
+
+// Extract response type
+type GetServerResponse = HetznerCloud<'/servers/{id}', 'get'>['response']
+
+// Extract query parameters
+type ListServersQuery = HetznerCloud<'/servers', 'get'>['query']
+
+// Extract path parameters
+type ServerPathParams = HetznerCloud<'/servers/{id}', 'get'>['path']
+
+// Use in functions for type safety
+function processServer(server: GetServerResponse) {
+  console.log(server.server.id)    // ✅ Full autocomplete
+  console.log(server.server.name)  // ✅ Type-checked
+}
+
+function createServer(body: CreateServerBody) {
+  // TypeScript enforces correct structure
+  return client('/servers', {
+    method: 'POST',
+    body  // ✅ Type-safe
+  })
+}
+```
+
+**Available properties:**
+- `['request']` - Request body type
+- `['response']` - Success response (200/201)
+- `['query']` - Query parameters
+- `['path']` - Path parameters
+- `['responses'][status]` - Specific status code response
+
+Works with all APIs: `HetznerCloud`, `DigitalOcean`, `OryKaratos`, `OryHydra`.
+
 ### Using with AI Assistants (MCP)
 
 See the [MCP Server Setup](#mcp-server-setup) section below.
