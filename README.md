@@ -77,25 +77,26 @@ pnpm build
 ### Using the Type-Safe API Client
 
 ```typescript
-import { createClient, kratos } from 'toonfetch/ory'
+import { createClient, cloud } from 'toonfetch/hetzner'
 
 // Create a typed client
 const client = createClient({
-  baseURL: 'https://your-api.com',
+  baseURL: 'https://api.hetzner.cloud/v1',
   headers: {
-    'Authorization': 'Bearer your-token'
+    'Authorization': 'Bearer your-api-token'
   }
-}).with(kratos)
+}).with(cloud)
 
 // Fully typed requests and responses
-const schema = await client('/schemas/{id}', {
-  method: 'GET',
-  path: { id: 'default' }  // ✅ Type-checked
+const servers = await client('/servers', {
+  method: 'GET'  // ✅ Type-checked
 })
 
 // TypeScript knows the response type
-console.log(schema.properties)  // ✅ Autocomplete works
+console.log(servers.servers)  // ✅ Autocomplete works
 ```
+
+See [Supported APIs](#supported-apis) for all available services.
 
 ### Using with AI Assistants (MCP)
 
@@ -107,6 +108,7 @@ ToonFetch currently includes:
 
 | API | Description | Endpoints | Import |
 |-----|-------------|-----------|--------|
+| **Hetzner Cloud** | Cloud infrastructure management | 100+ | `toonfetch/hetzner` |
 | **Ory Kratos** | Identity & user management | 50+ | `toonfetch/ory` |
 | **Ory Hydra** | OAuth 2.0 & OpenID Connect | 40+ | `toonfetch/ory` |
 
@@ -234,10 +236,11 @@ pnpm install && pnpm build
 
 ## Why TOON Format?
 
-TOON compresses OpenAPI specs by ~40-45%:
+TOON compresses OpenAPI specs by ~40-50%:
 
 | Spec | JSON | TOON | Savings |
 |------|------|------|---------|
+| Hetzner Cloud | 747k tokens | 374k tokens | **50%** |
 | Ory Kratos | 134k tokens | 73k tokens | **45%** |
 | Ory Hydra | 69k tokens | 40k tokens | **42%** |
 
