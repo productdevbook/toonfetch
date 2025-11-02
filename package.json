@@ -1,7 +1,7 @@
 {
   "name": "toonfetch",
   "type": "module",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "private": false,
   "packageManager": "pnpm@10.20.0",
   "description": "Type-safe OpenAPI clients with MCP server for AI-driven API exploration",
