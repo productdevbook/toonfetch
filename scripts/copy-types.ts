@@ -1,6 +1,6 @@
 #!/usr/bin/env tsx
 
-import { readdirSync, statSync, existsSync, copyFileSync, mkdirSync } from 'node:fs'
+import { copyFileSync, existsSync, mkdirSync, readdirSync, statSync } from 'node:fs'
 import { join } from 'node:path'
 
 const OPENAPI_SPECS_DIR = 'openapi-specs'

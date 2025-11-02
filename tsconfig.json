@@ -1,9 +1,14 @@
 {
   "compilerOptions": {
     "target": "ESNext",
+    "baseUrl": ".",
     "rootDir": ".",
     "module": "ESNext",
     "moduleResolution": "Bundler",
+    "paths": {
+      "ory": ["./openapi-specs/ory"],
+      "ory/*": ["./openapi-specs/ory/*"]
+    },
     "resolveJsonModule": true,
     "strict": true,
     "noUncheckedIndexedAccess": true,
@@ -14,11 +19,6 @@
     "isolatedModules": true,
     "verbatimModuleSyntax": true,
     "erasableSyntaxOnly": true,
-    "skipLibCheck": true,
-    "baseUrl": ".",
-    "paths": {
-      "ory": ["./openapi-specs/ory"],
-      "ory/*": ["./openapi-specs/ory/*"]
-    }
+    "skipLibCheck": true
   }
 }

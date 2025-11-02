@@ -3,9 +3,6 @@
   "type": "module",
   "version": "0.0.1",
   "private": false,
-  "files": [
-    "dist"
-  ],
   "packageManager": "pnpm@10.20.0",
   "exports": {
     "./ory": {
@@ -13,6 +10,9 @@
       "import": "./dist/ory.js"
     }
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "pnpm update:exports && tsdown && pnpm copy:types && pnpm add:refs",
     "automd": "automd",
@@ -26,6 +26,9 @@
     "test:types": "tsc --noEmit",
     "release": "bumpp -r"
   },
+  "dependencies": {
+    "apiful": "^4.0.0"
+  },
   "devDependencies": {
     "@antfu/eslint-config": "^6.2.0",
     "@types/node": "^24.9.2",
@@ -37,8 +40,5 @@
     "tsx": "^4.20.6",
     "typescript": "^5.9.3",
     "vitest": "^4.0.6"
-  },
-  "dependencies": {
-    "apiful": "^4.0.0"
   }
 }

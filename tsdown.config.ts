@@ -1,6 +1,6 @@
-import { readdirSync, statSync, existsSync } from 'node:fs'
-import { join } from 'node:path'
 import type { UserConfig, UserConfigFn } from 'tsdown/config'
+import { existsSync, readdirSync, statSync } from 'node:fs'
+import { join } from 'node:path'
 import { defineConfig } from 'tsdown/config'
 
 // Automatically find all services in openapi-specs

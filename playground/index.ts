@@ -1,4 +1,4 @@
-import { createClient, kratos, hydra } from 'toonfetch/ory'
+import { createClient, hydra, kratos } from 'toonfetch/ory'
 
 // Create Ory Kratos client
 const kratosClient = createClient({

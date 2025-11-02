@@ -1,8 +1,9 @@
 #!/usr/bin/env tsx
+/* eslint-disable node/prefer-global/process */
 
-import { readdirSync, statSync, existsSync } from 'node:fs'
-import { join } from 'node:path'
 import { execSync } from 'node:child_process'
+import { existsSync, readdirSync, statSync } from 'node:fs'
+import { join } from 'node:path'
 
 const OPENAPI_SPECS_DIR = 'openapi-specs'
 

@@ -1,4 +1,4 @@
-import { OpenAPIBuilder, createClient as apifulCreateClient } from 'apiful'
+import { createClient as apifulCreateClient, OpenAPIBuilder } from 'apiful'
 
 // Re-export createClient for convenience
 export { apifulCreateClient as createClient }

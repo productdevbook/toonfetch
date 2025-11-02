@@ -1,6 +1,6 @@
 #!/usr/bin/env tsx
 
-import { readdirSync, statSync, existsSync, readFileSync, writeFileSync } from 'node:fs'
+import { existsSync, readdirSync, readFileSync, statSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 
 const OPENAPI_SPECS_DIR = 'openapi-specs'
@@ -51,7 +51,7 @@ function updatePackageExports(): void {
 
   packageJson.exports = exports
 
-  writeFileSync(PACKAGE_JSON_PATH, JSON.stringify(packageJson, null, 2) + '\n')
+  writeFileSync(PACKAGE_JSON_PATH, `${JSON.stringify(packageJson, null, 2)}\n`)
 
   console.log('\n✅ package.json exports updated successfully!')
 }
