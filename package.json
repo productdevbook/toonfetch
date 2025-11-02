@@ -10,8 +10,12 @@
       "import": "./dist/ory.js"
     }
   },
+  "bin": {
+    "toonfetch-mcp": "./dist/mcp-server.js"
+  },
   "files": [
-    "dist"
+    "dist",
+    "openapi-specs"
   ],
   "scripts": {
     "build": "pnpm update:exports && tsdown && pnpm copy:types && pnpm add:refs",
@@ -27,10 +31,13 @@
     "release": "bumpp -r"
   },
   "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.20.2",
+    "@toon-format/toon": "^0.7.0",
     "apiful": "^4.0.0"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^6.2.0",
+    "@toon-format/cli": "^0.7.0",
     "@types/node": "^24.9.2",
     "automd": "^0.4.2",
     "bumpp": "^10.3.1",

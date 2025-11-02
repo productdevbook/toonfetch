@@ -28,7 +28,10 @@ function findServiceEntries(): Record<string, string> {
 }
 
 const config: UserConfig | UserConfigFn = defineConfig({
-  entry: findServiceEntries(),
+  entry: {
+    ...findServiceEntries(),
+    'mcp-server': 'src/mcp-server.ts',
+  },
   dts: true,
   outDir: 'dist',
 })

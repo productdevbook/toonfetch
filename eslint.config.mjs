@@ -9,6 +9,7 @@ export default antfu(
       '.claude',
       'CLAUDE.md',
       'playground',
+      '**.toon',
     ],
   },
   {
