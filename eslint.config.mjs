@@ -10,6 +10,7 @@ export default antfu(
       'CLAUDE.md',
       'playground',
       '**.toon',
+      'openapi-specs/**/*.json',
     ],
   },
   {
