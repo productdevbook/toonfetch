@@ -14,6 +14,7 @@ export default antfu(
   },
   {
     rules: {
+      'jsonc/sort-keys': 'off',
     },
   },
 )

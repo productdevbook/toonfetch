@@ -1,0 +1,97 @@
+<svg width="1200" height="300" viewBox="0 0 1200 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background gradient -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1E3A5F;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#18181B;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#28CF8D;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4FFFB0;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="300" fill="url(#bgGradient)"/>
+
+  <!-- Decorative grid pattern -->
+  <g opacity="0.1">
+    <line x1="0" y1="50" x2="1200" y2="50" stroke="#28CF8D" stroke-width="1"/>
+    <line x1="0" y1="150" x2="1200" y2="150" stroke="#28CF8D" stroke-width="1"/>
+    <line x1="0" y1="250" x2="1200" y2="250" stroke="#28CF8D" stroke-width="1"/>
+    <line x1="200" y1="0" x2="200" y2="300" stroke="#28CF8D" stroke-width="1"/>
+    <line x1="400" y1="0" x2="400" y2="300" stroke="#28CF8D" stroke-width="1"/>
+    <line x1="600" y1="0" x2="600" y2="300" stroke="#28CF8D" stroke-width="1"/>
+    <line x1="800" y1="0" x2="800" y2="300" stroke="#28CF8D" stroke-width="1"/>
+    <line x1="1000" y1="0" x2="1000" y2="300" stroke="#28CF8D" stroke-width="1"/>
+  </g>
+
+  <!-- Icon/Logo placeholder - Hexagon shape -->
+  <g transform="translate(100, 100)">
+    <path d="M 50 0 L 90 25 L 90 75 L 50 100 L 10 75 L 10 25 Z" fill="none" stroke="#28CF8D" stroke-width="3"/>
+    <path d="M 50 20 L 50 80 M 30 35 L 70 65 M 30 65 L 70 35" stroke="#28CF8D" stroke-width="2" stroke-linecap="round"/>
+  </g>
+
+  <!-- Main Title -->
+  <text x="230" y="140" font-family="monospace" font-size="72" font-weight="700" fill="url(#textGradient)">
+    ToonFetch
+  </text>
+
+  <!-- Subtitle -->
+  <text x="230" y="180" font-family="sans-serif" font-size="24" fill="#F5E6D3" opacity="0.9">
+    Type-safe OpenAPI clients with MCP server
+  </text>
+
+  <!-- Feature badges -->
+  <g transform="translate(230, 210)">
+    <!-- TypeScript badge -->
+    <rect width="110" height="30" fill="#3178C6" rx="15"/>
+    <text x="55" y="20" font-family="sans-serif" font-size="14" font-weight="600" fill="white" text-anchor="middle">
+      TypeScript
+    </text>
+  </g>
+
+  <g transform="translate(360, 210)">
+    <!-- MCP badge -->
+    <rect width="120" height="30" fill="#28CF8D" rx="15"/>
+    <text x="60" y="20" font-family="sans-serif" font-size="14" font-weight="600" fill="#18181B" text-anchor="middle">
+      MCP Server
+    </text>
+  </g>
+
+  <g transform="translate(500, 210)">
+    <!-- TOON badge -->
+    <rect width="140" height="30" fill="none" stroke="#28CF8D" stroke-width="2" rx="15"/>
+    <text x="70" y="20" font-family="sans-serif" font-size="14" font-weight="600" fill="#28CF8D" text-anchor="middle">
+      TOON Format
+    </text>
+  </g>
+
+  <g transform="translate(660, 210)">
+    <!-- AI Ready badge -->
+    <rect width="110" height="30" fill="none" stroke="#28CF8D" stroke-width="2" rx="15"/>
+    <text x="55" y="20" font-family="sans-serif" font-size="14" font-weight="600" fill="#28CF8D" text-anchor="middle">
+      AI Ready
+    </text>
+  </g>
+
+  <!-- Decorative code snippet in corner -->
+  <g transform="translate(900, 100)" opacity="0.6">
+    <text x="0" y="0" font-family="monospace" font-size="14" fill="#28CF8D">
+      import { createClient }
+    </text>
+    <text x="0" y="25" font-family="monospace" font-size="14" fill="#F5E6D3">
+      from 'toonfetch'
+    </text>
+    <text x="0" y="60" font-family="monospace" font-size="14" fill="#28CF8D">
+      const client =
+    </text>
+    <text x="0" y="85" font-family="monospace" font-size="14" fill="#F5E6D3">
+      createClient()
+    </text>
+    <text x="20" y="110" font-family="monospace" font-size="14" fill="#F5E6D3">
+      .with(api)
+    </text>
+  </g>
+</svg>

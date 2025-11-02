@@ -1,4 +1,4 @@
-<!-- [![ToonFetch banner](./.github/assets/banner.svg)](https://github.com/productdevbook/toonfetch) -->
+[![ToonFetch banner](./.github/assets/banner.svg)](https://github.com/productdevbook/toonfetch)
 
 # ToonFetch
 

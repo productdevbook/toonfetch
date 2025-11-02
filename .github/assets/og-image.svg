@@ -1,0 +1,138 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#F5E6D3"/>
+
+  <!-- Bottom bar -->
+  <rect y="480" width="1200" height="150" fill="#1E3A5F"/>
+
+  <!-- Title -->
+  <text x="60" y="80" font-family="monospace" font-size="42" font-weight="700" fill="#1E3A5F">
+    ToonFetch
+  </text>
+  <line x1="60" y1="95" x2="1140" y2="95" stroke="#1E3A5F" stroke-width="2"/>
+
+  <!-- Subtitle -->
+  <text x="60" y="130" font-family="sans-serif" font-size="22" fill="#1E3A5F" opacity="0.8">
+    Type-safe OpenAPI clients with MCP server for AI-driven API exploration
+  </text>
+
+  <!-- Flow diagram boxes -->
+  <!-- OpenAPI Box -->
+  <rect x="80" y="200" width="180" height="100" fill="none" stroke="#1E3A5F" stroke-width="3" rx="4"/>
+  <text x="170" y="250" font-family="monospace" font-size="32" font-weight="600" fill="#1E3A5F" text-anchor="middle">
+    OpenAPI
+  </text>
+  <text x="170" y="275" font-family="monospace" font-size="18" fill="#1E3A5F" text-anchor="middle" opacity="0.7">
+    .json/.toon
+  </text>
+
+  <!-- Arrow 1 -->
+  <path d="M 270 250 L 360 250" stroke="#1E3A5F" stroke-width="3" fill="none"/>
+  <path d="M 360 250 L 350 245 L 350 255 Z" fill="#1E3A5F"/>
+
+  <!-- ToonFetch Process Box -->
+  <rect x="370" y="200" width="240" height="100" fill="#1E3A5F" opacity="0.1"/>
+  <pattern id="diagonalStripes" patternUnits="userSpaceOnUse" width="8" height="8" patternTransform="rotate(45)">
+    <line x1="0" y1="0" x2="0" y2="8" stroke="#1E3A5F" stroke-width="1" opacity="0.3"/>
+  </pattern>
+  <rect x="370" y="200" width="240" height="100" fill="url(#diagonalStripes)"/>
+  <text x="490" y="240" font-family="monospace" font-size="24" font-weight="600" fill="#1E3A5F" text-anchor="middle">
+    ToonFetch
+  </text>
+  <text x="490" y="270" font-family="monospace" font-size="16" fill="#1E3A5F" text-anchor="middle" opacity="0.8">
+    build pipeline
+  </text>
+
+  <!-- Arrow 2 -->
+  <path d="M 620 250 L 710 250" stroke="#1E3A5F" stroke-width="3" fill="none"/>
+  <path d="M 710 250 L 700 245 L 700 255 Z" fill="#1E3A5F"/>
+
+  <!-- TypeScript Client Box -->
+  <rect x="720" y="180" width="180" height="70" fill="none" stroke="#28CF8D" stroke-width="3" rx="4"/>
+  <text x="810" y="220" font-family="monospace" font-size="24" font-weight="600" fill="#1E3A5F" text-anchor="middle">
+    TypeScript
+  </text>
+  <text x="810" y="240" font-family="monospace" font-size="14" fill="#1E3A5F" text-anchor="middle" opacity="0.7">
+    Type-safe client
+  </text>
+
+  <!-- MCP Server Box -->
+  <rect x="720" y="260" width="180" height="70" fill="none" stroke="#28CF8D" stroke-width="3" rx="4" stroke-dasharray="8,4"/>
+  <text x="810" y="300" font-family="monospace" font-size="24" font-weight="600" fill="#1E3A5F" text-anchor="middle">
+    MCP Server
+  </text>
+  <text x="810" y="320" font-family="monospace" font-size="14" fill="#1E3A5F" text-anchor="middle" opacity="0.7">
+    AI exploration
+  </text>
+
+  <!-- Token savings visualization -->
+  <text x="960" y="200" font-family="monospace" font-size="20" fill="#1E3A5F">
+    tokens:
+  </text>
+
+  <!-- Before bar -->
+  <rect x="960" y="220" width="200" height="35" fill="#1E3A5F"/>
+
+  <!-- After bar -->
+  <rect x="960" y="270" width="110" height="35" fill="#1E3A5F"/>
+  <rect x="1070" y="270" width="90" height="35" fill="#1E3A5F" opacity="0.1"/>
+  <pattern id="diagonalStripes2" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)">
+    <line x1="0" y1="0" x2="0" y2="6" stroke="#1E3A5F" stroke-width="0.8" opacity="0.3"/>
+  </pattern>
+  <rect x="1070" y="270" width="90" height="35" fill="url(#diagonalStripes2)"/>
+
+  <!-- Savings text -->
+  <text x="1010" y="340" font-family="monospace" font-size="20" fill="#1E3A5F">
+    ≈ save 40-60%
+  </text>
+
+  <!-- Features badges -->
+  <g transform="translate(80, 380)">
+    <rect width="140" height="40" fill="#28CF8D" rx="20"/>
+    <text x="70" y="26" font-family="sans-serif" font-size="16" font-weight="600" fill="white" text-anchor="middle">
+      ✨ Type-safe
+    </text>
+  </g>
+
+  <g transform="translate(240, 380)">
+    <rect width="160" height="40" fill="#28CF8D" rx="20"/>
+    <text x="80" y="26" font-family="sans-serif" font-size="16" font-weight="600" fill="white" text-anchor="middle">
+      🤖 AI Ready
+    </text>
+  </g>
+
+  <g transform="translate(420, 380)">
+    <rect width="140" height="40" fill="#28CF8D" rx="20"/>
+    <text x="70" y="26" font-family="sans-serif" font-size="16" font-weight="600" fill="white" text-anchor="middle">
+      📦 TOON
+    </text>
+  </g>
+
+  <g transform="translate(580, 380)">
+    <rect width="160" height="40" fill="#28CF8D" rx="20"/>
+    <text x="80" y="26" font-family="sans-serif" font-size="16" font-weight="600" fill="white" text-anchor="middle">
+      🧪 Tested
+    </text>
+  </g>
+
+  <!-- Bottom section - Code example -->
+  <text x="80" y="540" font-family="monospace" font-size="24" font-weight="600" fill="#F5E6D3">
+    Quick Start:
+  </text>
+
+  <!-- JSON example -->
+  <text x="280" y="540" font-family="monospace" font-size="20" fill="#F5E6D3">
+    npm install toonfetch
+  </text>
+  <text x="280" y="575" font-family="monospace" font-size="18" fill="#28CF8D" font-style="italic">
+    // Type-safe API calls
+  </text>
+
+  <!-- Import example -->
+  <text x="720" y="540" font-family="monospace" font-size="18" fill="#F5E6D3">
+    import { createClient } from 'toonfetch'
+  </text>
+  <text x="720" y="575" font-family="monospace" font-size="18" fill="#28CF8D">
+    const client = createClient().with(api)
+  </text>
+</svg>

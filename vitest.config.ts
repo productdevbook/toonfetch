@@ -1,6 +1,6 @@
+import type { ViteUserConfigExport } from 'vitest/config'
 import { resolve } from 'node:path'
 import { defineConfig } from 'vitest/config'
-import type { ViteUserConfigExport } from 'vitest/config'
 
 const config: ViteUserConfigExport = defineConfig({
   test: {
