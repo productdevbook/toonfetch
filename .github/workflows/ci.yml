@@ -59,12 +59,10 @@ jobs:
       - name: 👀 Lint
         run: pnpm lint
 
-      - name: 🔍 Type Check
-        run: pnpm test:types
-
       - name: 🧪 Test
         run: pnpm test
 
+      # Build includes type checking via tsdown
       - name: 🚀 Build
         run: pnpm build
 
