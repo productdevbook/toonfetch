@@ -1,0 +1,36 @@
+# Code Owners for ToonFetch
+# These owners will be automatically requested for review when someone opens a PR
+
+# Global owner - all files
+*                       @productdevbook
+
+# Critical infrastructure
+/.github/               @productdevbook
+/.github/workflows/     @productdevbook
+/scripts/               @productdevbook
+
+# Core source files
+/src/                   @productdevbook
+/src/mcp-server.ts      @productdevbook
+
+# OpenAPI specifications
+/openapi-specs/         @productdevbook
+
+# Configuration files
+package.json            @productdevbook
+tsconfig.json           @productdevbook
+tsdown.config.ts        @productdevbook
+vitest.config.ts        @productdevbook
+eslint.config.mjs       @productdevbook
+
+# Documentation
+README.md               @productdevbook
+CONTRIBUTING.md         @productdevbook
+SECURITY.md             @productdevbook
+CLAUDE.md               @productdevbook
+
+# Tests (optional - allow community contributions more easily)
+# /test/                @productdevbook
+
+# Playground (optional - less critical)
+# /playground/          @productdevbook

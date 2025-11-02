@@ -1,5 +1,9 @@
 name: CI
 
+# IMPORTANT: To prevent forks from automatically running CI workflows:
+# Repository Settings > Actions > General > Fork pull request workflows
+# Enable "Require approval for first-time contributors"
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -14,12 +18,17 @@ on:
       - main
     paths-ignore:
       - 'docs/**'
+      - '**.md'
 
   pull_request:
     branches:
       - main
     paths-ignore:
       - 'docs/**'
+      - '**.md'
+
+  # Manuel tetikleme - sadece maintainer'lar
+  workflow_dispatch:
 
 jobs:
   build-test:
@@ -50,5 +59,19 @@ jobs:
       - name: 👀 Lint
         run: pnpm lint
 
+      - name: 🔍 Type Check
+        run: pnpm test:types
+
+      - name: 🧪 Test
+        run: pnpm test
+
       - name: 🚀 Build
         run: pnpm build
+
+      - name: 📤 Upload artifacts
+        uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: dist-${{ matrix.os }}
+          path: dist/
+          retention-days: 7
