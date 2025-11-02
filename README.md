@@ -14,16 +14,9 @@
 
 ## Table of Contents
 
-- [What is ToonFetch?](#what-is-toonfetch)
-- [Features](#features)
-- [Installation](#installation)
-- [Quick Start](#quick-start)
-- [Supported APIs](#supported-apis)
-- [MCP Server Setup](#mcp-server-setup)
-- [Adding New APIs](#adding-new-apis)
-- [Development](#development)
-- [Troubleshooting](#troubleshooting)
-- [Contributing](#contributing)
+- [Features](#features) · [Installation](#installation) · [Quick Start](#quick-start)
+- [MCP Server Setup](#mcp-server-setup) · [Supported APIs](#supported-apis)
+- [Development](#development) · [Contributing](#contributing)
 
 ---
 
@@ -121,62 +114,22 @@ ToonFetch currently includes:
 
 ## MCP Server Setup
 
-The MCP server lets AI assistants (like Claude Desktop and Claude Code CLI) explore your APIs and generate code examples.
+### Quick Setup
 
-### Quick Reference
-
-| Client | Config Location | Setup Command |
-|--------|----------------|---------------|
-| **Claude Desktop** | `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS)<br>`%APPDATA%\Claude\claude_desktop_config.json` (Windows) | Manual JSON edit |
-| **Claude Code CLI** | `.mcp.json` in project root | `claude mcp add --transport stdio --scope project toonfetch -- toonfetch-mcp` |
-
-### Prerequisites
-
-Choose one:
-- [Claude Desktop](https://claude.ai/download) - GUI application
-- [Claude Code CLI](https://docs.claude.com/en/docs/claude-code) - Command line interface
-- Or any other MCP-compatible client
-
-Requirements:
-- Node.js 18+
-
-### Step 1: Install
-
-**Option A: Global Install (Recommended)**
-
+**1. Install (choose one):**
 ```bash
-npm install -g toonfetch
+npm install -g toonfetch  # Global
+npx toonfetch-mcp         # No install
 ```
 
-**Option B: npx (No install needed)**
+**2. Configure:**
 
-```bash
-# Just use npx in the config (see Step 2)
-```
+<details>
+<summary><b>Claude Desktop</b> (click to expand)</summary>
 
-**Option C: Local Build (For contributors)**
-
-```bash
-git clone https://github.com/productdevbook/toonfetch.git
-cd toonfetch
-pnpm install && pnpm build
-```
-
-### Step 2A: Configure for Claude Desktop
-
-#### Find the Config File
-
-| OS | Path |
-|----|------|
-| **macOS** | `~/Library/Application Support/Claude/claude_desktop_config.json` |
-| **Windows** | `%APPDATA%\Claude\claude_desktop_config.json` |
-| **Linux** | `~/.config/Claude/claude_desktop_config.json` |
-
-If the file doesn't exist, create it.
-
-#### Add ToonFetch Server
-
-**For Global Install:**
+Edit config file:
+- macOS: `~/Library/Application Support/Claude/claude_desktop_config.json`
+- Windows: `%APPDATA%\Claude\claude_desktop_config.json`
 
 ```json
 {
@@ -188,66 +141,17 @@ If the file doesn't exist, create it.
 }
 ```
 
-**For npx (no install):**
+Restart Claude Desktop.
+</details>
 
-```json
-{
-  "mcpServers": {
-    "toonfetch": {
-      "command": "npx",
-      "args": ["-y", "toonfetch-mcp"]
-    }
-  }
-}
-```
-
-**For Local Build:**
-
-```json
-{
-  "mcpServers": {
-    "toonfetch": {
-      "command": "node",
-      "args": ["/absolute/path/to/toonfetch/dist/mcp-server.js"]
-    }
-  }
-}
-```
-
-**Finding the absolute path (Local Build only):**
-
-```bash
-# macOS/Linux
-cd /path/to/toonfetch && echo "$(pwd)/dist/mcp-server.js"
-
-# Windows PowerShell
-cd C:\path\to\toonfetch; "$(Get-Location)\dist\mcp-server.js"
-```
-
-### Step 2B: Configure for Claude Code CLI
-
-Claude Code uses project-scoped MCP servers via `.mcp.json` file in your project root.
-
-#### Option 1: Using CLI (Recommended)
-
-**For Global Install:**
+<details>
+<summary><b>Claude Code CLI</b> (click to expand)</summary>
 
 ```bash
 claude mcp add --transport stdio --scope project toonfetch -- toonfetch-mcp
 ```
 
-**For npx (no install):**
-
-```bash
-claude mcp add --transport stdio --scope project toonfetch -- npx -y toonfetch-mcp
-```
-
-#### Option 2: Manual Configuration
-
-Create `.mcp.json` in your project root:
-
-**For Global Install:**
-
+Or create `.mcp.json`:
 ```json
 {
   "mcpServers": {
@@ -257,70 +161,10 @@ Create `.mcp.json` in your project root:
   }
 }
 ```
+</details>
 
-**For npx:**
-
-```json
-{
-  "mcpServers": {
-    "toonfetch": {
-      "command": "npx",
-      "args": ["-y", "toonfetch-mcp"]
-    }
-  }
-}
-```
-
-**For Local Development:**
-
-```json
-{
-  "mcpServers": {
-    "toonfetch": {
-      "command": "node",
-      "args": ["./dist/mcp-server.js"]
-    }
-  }
-}
-```
-
-#### Verify Configuration
-
-```bash
-# Check MCP status
-claude mcp list
-
-# Or use the /mcp command in Claude Code
-/mcp
-```
-
-### Step 3: Restart Claude Desktop (Desktop Only)
-
-1. Quit Claude Desktop completely
-2. Reopen it
-3. Look for the 🔌 MCP icon
-
-### Step 4: Test It
-
-**In Claude Desktop:**
-
-```
-List available APIs using toonfetch
-```
-
-**In Claude Code CLI:**
-
-```bash
-# Start a conversation
-claude
-
-# Then ask:
-List available APIs using toonfetch
-```
-
-Claude should show you the available APIs (Ory Kratos, Ory Hydra, etc.).
-
-> **Note:** Claude Code will prompt for approval before using project-scoped MCP servers. Click "Allow" when prompted.
+**3. Test:**
+Ask Claude: "List available APIs using toonfetch"
 
 ### Available MCP Tools
 
@@ -336,205 +180,57 @@ Claude should show you the available APIs (Ory Kratos, Ory Hydra, etc.).
 
 ## Adding New APIs
 
-ToonFetch auto-discovers OpenAPI specs. Here's how to add your own:
+<details>
+<summary>Click to see how to add your own OpenAPI specs</summary>
 
-### 1. Create Service Directory
+1. Create directory: `mkdir -p openapi-specs/myapi`
+2. Add your `myapi.json` OpenAPI spec
+3. Copy `apiful.config.ts` and `index.ts` from `openapi-specs/ory/` as template
+4. Run `pnpm build`
 
-```bash
-mkdir -p openapi-specs/github
-```
+Done! Your API is now available as `toonfetch/myapi` and in the MCP server.
 
-### 2. Add OpenAPI Spec (JSON)
-
-```bash
-# Download or copy your OpenAPI spec
-cp ~/github-api.json openapi-specs/github/github.json
-```
-
-### 3. Create `apiful.config.ts`
-
-```typescript
-// openapi-specs/github/apiful.config.ts
-import { defineConfig } from 'apiful'
-
-export default defineConfig({
-  openapis: {
-    github: {                    // Must match filename
-      filepath: './github.json'
-    }
-  },
-  output: './types.d.ts'
-})
-```
-
-### 4. Create `index.ts`
-
-```typescript
-// openapi-specs/github/index.ts
-import { createClient as apifulCreateClient, OpenAPIBuilder } from 'apiful'
-
-export { apifulCreateClient as createClient }
-export const github = OpenAPIBuilder<'github'>()
-export default { github }
-```
-
-### 5. Build
-
-```bash
-pnpm build
-```
-
-This automatically:
-- ✅ Converts JSON to TOON (compressed)
-- ✅ Generates TypeScript types
-- ✅ Updates package.json exports
-- ✅ Bundles to `dist/github.js`
-- ✅ Makes it available in MCP server
-
-### 6. Use It
-
-```typescript
-import { createClient, github } from 'toonfetch/github'
-
-const client = createClient({
-  baseURL: 'https://api.github.com',
-  headers: { 'Authorization': 'token ghp_...' }
-}).with(github)
-
-// Fully typed!
-const user = await client('/users/{username}', {
-  method: 'GET',
-  path: { username: 'octocat' }
-})
-```
+See [CLAUDE.md](./CLAUDE.md) for detailed instructions.
+</details>
 
 ## Development
 
-### Setup
-
 ```bash
-# Install
-pnpm install
-
-# Build
-pnpm build
-
-# Test
-pnpm test
-
-# Test with coverage
-pnpm test:coverage
-
-# Lint
-pnpm lint:fix
+pnpm install  # Install
+pnpm build    # Build
+pnpm test     # Test
+pnpm lint:fix # Lint
 ```
 
-### Scripts
-
-| Script | Description |
-|--------|-------------|
-| `pnpm build` | Full build pipeline |
-| `pnpm convert:toon` | Convert JSON to TOON |
-| `pnpm generate:types` | Generate TypeScript types |
-| `pnpm test` | Run all tests |
-| `pnpm test:watch` | Run tests in watch mode |
-| `pnpm lint` | Run ESLint |
-
-### Project Structure
-
-```
-toonfetch/
-├── src/mcp-server.ts           # MCP server
-├── scripts/                     # Build scripts
-├── openapi-specs/              # API specifications
-│   └── ory/
-│       ├── kratos.json         # OpenAPI spec
-│       ├── kratos.toon         # Compressed TOON
-│       ├── apiful.config.ts    # Type config
-│       ├── index.ts            # Client exports
-│       └── types.d.ts          # Generated types
-├── test/                       # Tests (76+)
-├── playground/                 # Examples
-└── dist/                       # Compiled output
-    ├── ory.js                  # Bundled client
-    ├── ory.d.ts                # Type definitions
-    └── mcp-server.js           # MCP executable
-```
+See [CLAUDE.md](./CLAUDE.md) for architecture, build pipeline, and contribution guide.
 
 ## Troubleshooting
 
-### MCP Server Not Showing
+<details>
+<summary>MCP Server not showing?</summary>
 
-**For Claude Desktop - Check Config File:**
 ```bash
-# macOS
-cat ~/Library/Application\ Support/Claude/claude_desktop_config.json
+# Test server works
+toonfetch-mcp  # Should output: "ToonFetch MCP server running on stdio"
 
-# Windows
-type %APPDATA%\Claude\claude_desktop_config.json
+# Check config
+claude mcp list  # For Claude Code
+cat .mcp.json    # Check file exists
 
-# Validate JSON
-node -e "JSON.parse(require('fs').readFileSync('path/to/config.json'))"
+# Restart Claude Desktop (if using Desktop)
 ```
+</details>
 
-**For Claude Code - Check Project Config:**
-```bash
-# Check .mcp.json exists
-cat .mcp.json
-
-# List configured servers
-claude mcp list
-
-# Check status in Claude Code
-# Run: /mcp
-```
-
-**Check MCP Server:**
-```bash
-# Global install
-toonfetch-mcp
-# Should output: "ToonFetch MCP server running on stdio"
-
-# Local build
-node /path/to/dist/mcp-server.js
-```
-
-**Check Claude Logs:**
-```bash
-# macOS
-tail -f ~/Library/Logs/Claude/mcp*.log
-
-# Windows
-# Check %APPDATA%\Claude\Logs\
-```
-
-### Types Not Generated
+<details>
+<summary>Build issues?</summary>
 
 ```bash
-# Manually generate
-pnpm generate:types
-
-# Check output
-ls openapi-specs/*/types.d.ts
-```
-
-### Build Fails
-
-```bash
-# Clean install
 rm -rf node_modules pnpm-lock.yaml dist
-pnpm install
-pnpm build
+pnpm install && pnpm build
 ```
+</details>
 
-### Still Having Issues?
-
-1. Check [CLAUDE.md](./CLAUDE.md) - Detailed docs
-2. Search [issues](https://github.com/productdevbook/toonfetch/issues)
-3. Create [new issue](https://github.com/productdevbook/toonfetch/issues/new) with:
-   - Node version (`node --version`)
-   - OS
-   - Error message
+**Still stuck?** [Open an issue](https://github.com/productdevbook/toonfetch/issues) with your Node version and error message.
 
 ## Why TOON Format?
 
@@ -554,47 +250,24 @@ Learn more: [TOON Format](https://github.com/toon-format/toon)
 
 ## Contributing
 
-We welcome contributions! See [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines.
-
-Quick start:
+Contributions welcome! See [CONTRIBUTING.md](./CONTRIBUTING.md).
 
 ```bash
-# Fork and clone
 git clone https://github.com/productdevbook/toonfetch.git
 cd toonfetch
-
-# Create branch
-git checkout -b feature/my-feature
-
-# Make changes, add tests
-pnpm test
-
-# Lint
-pnpm lint:fix
-
-# Commit
-git commit -m "feat: add my feature"
-git push origin feature/my-feature
+pnpm install && pnpm build
+# Make changes, run `pnpm test && pnpm lint:fix`
 ```
 
-## Documentation
+## Links
 
-- [CLAUDE.md](./CLAUDE.md) - Comprehensive project docs
-- [CONTRIBUTING.md](./CONTRIBUTING.md) - Contribution guide
-- [test/README.md](./test/README.md) - Testing guide
-- [Model Context Protocol](https://modelcontextprotocol.io/) - MCP specification
+- [CLAUDE.md](./CLAUDE.md) - Architecture & development guide
+- [Model Context Protocol](https://modelcontextprotocol.io/) - MCP docs
 
 ## License
 
 MIT © 2025
 
-## Acknowledgments
-
-- [apiful](https://github.com/lisnote/apiful) - Type-safe OpenAPI client generator
-- [TOON Format](https://github.com/toon-format/toon) - Spec compression
-- [Ory](https://www.ory.sh/) - Open source identity infrastructure
-- [Model Context Protocol](https://modelcontextprotocol.io/) - AI integration standard
-
 ---
 
-**Made with ❤️ for developers**
+Built with [apiful](https://github.com/lisnote/apiful) · [TOON](https://github.com/toon-format/toon) · [MCP](https://modelcontextprotocol.io/)
