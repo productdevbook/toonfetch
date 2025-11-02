@@ -30,6 +30,10 @@
     "claude"
   ],
   "exports": {
+    "./hetzner": {
+      "types": "./dist/hetzner.d.ts",
+      "import": "./dist/hetzner.js"
+    },
     "./ory": {
       "types": "./dist/ory.d.ts",
       "import": "./dist/ory.js"
@@ -43,7 +47,7 @@
     "openapi-specs"
   ],
   "scripts": {
-    "build": "pnpm convert:toon && pnpm update:exports && tsdown && pnpm copy:types && pnpm add:refs",
+    "build": "pnpm convert:toon && pnpm generate:types && pnpm update:exports && tsdown && pnpm copy:types && pnpm add:refs",
     "generate:types": "tsx scripts/generate-types.ts",
     "update:exports": "tsx scripts/update-exports.ts",
     "copy:types": "tsx scripts/copy-types.ts",
