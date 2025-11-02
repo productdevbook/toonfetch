@@ -1,5 +1,5 @@
 diff --git a/dist/index.js b/dist/index.js
-index f5148ebf7dad8fcb9043d19f360b5379bbbe76d1..978e381833b5cc7c4c788ba99b87a704fe73f109 100644
+index f5148ebf7dad8fcb9043d19f360b5379bbbe76d1..bcf6195d36f11e97c96e5420ab8cd2de5ce838eb 100644
 --- a/dist/index.js
 +++ b/dist/index.js
 @@ -151,8 +151,15 @@ function isNumericLiteral(token) {
@@ -30,3 +30,65 @@ index f5148ebf7dad8fcb9043d19f360b5379bbbe76d1..978e381833b5cc7c4c788ba99b87a704
  	const afterColon = content.slice(colonIndex + 1).trim();
  	const bracketContent = content.slice(bracketStart + 1, bracketEnd);
  	let parsedBracket;
+@@ -442,6 +450,33 @@ function decodeKeyValue(content, cursor, baseDepth, options) {
+ 		followDepth: baseDepth + 1
+ 	};
+ }
++function decodeKeyValueForListItem(content, cursor, baseDepth, options) {
++	const arrayHeader = parseArrayHeaderLine(content, DEFAULT_DELIMITER);
++	if (arrayHeader && arrayHeader.header.key) {
++		const value = decodeArrayFromHeader(arrayHeader.header, arrayHeader.inlineValues, cursor, baseDepth, options);
++		return {
++			key: arrayHeader.header.key,
++			value
++		};
++	}
++	const { key, end } = parseKeyToken(content, 0);
++	const rest = content.slice(end).trim();
++	if (!rest) {
++		const nextLine = cursor.peek();
++		if (nextLine && nextLine.depth > baseDepth + 1) return {
++			key,
++			value: decodeObject(cursor, baseDepth + 2, options)
++		};
++		return {
++			key,
++			value: {}
++		};
++	}
++	return {
++		key,
++		value: parsePrimitiveToken(rest)
++	};
++}
+ function decodeKeyValuePair(line, cursor, baseDepth, options) {
+ 	cursor.advance();
+ 	const { key, value } = decodeKeyValue(line.content, cursor, baseDepth, options);
+@@ -469,7 +504,8 @@ function decodeListArray(header, cursor, baseDepth, options) {
+ 	while (!cursor.atEnd() && items.length < header.length) {
+ 		const line = cursor.peek();
+ 		if (!line || line.depth < itemDepth) break;
+-		if (line.depth === itemDepth && line.content.startsWith(LIST_ITEM_PREFIX)) {
++		const isListItem = line.content.startsWith(LIST_ITEM_PREFIX) || line.content.trim() === "-";
++		if (line.depth === itemDepth && isListItem) {
+ 			if (startLine === void 0) startLine = line.lineNumber;
+ 			endLine = line.lineNumber;
+ 			const item = decodeListItem(cursor, itemDepth, header.delimiter, options);
+@@ -512,6 +548,7 @@ function decodeListItem(cursor, baseDepth, activeDelimiter, options) {
+ 	const line = cursor.next();
+ 	if (!line) throw new ReferenceError("Expected list item");
+ 	const afterHyphen = line.content.slice(LIST_ITEM_PREFIX.length);
++	if (!afterHyphen.trim()) return {};
+ 	if (isArrayHeaderAfterHyphen(afterHyphen)) {
+ 		const arrayHeader = parseArrayHeaderLine(afterHyphen, DEFAULT_DELIMITER);
+ 		if (arrayHeader) return decodeArrayFromHeader(arrayHeader.header, arrayHeader.inlineValues, cursor, baseDepth, options);
+@@ -520,7 +557,8 @@ function decodeListItem(cursor, baseDepth, activeDelimiter, options) {
+ 	return parsePrimitiveToken(afterHyphen);
+ }
+ function decodeObjectFromListItem(firstLine, cursor, baseDepth, options) {
+-	const { key, value, followDepth } = decodeKeyValue(firstLine.content.slice(LIST_ITEM_PREFIX.length), cursor, baseDepth, options);
++	const { key, value } = decodeKeyValueForListItem(firstLine.content.slice(LIST_ITEM_PREFIX.length), cursor, baseDepth, options);
++	const followDepth = baseDepth + 1;
+ 	const obj = { [key]: value };
+ 	while (!cursor.atEnd()) {
+ 		const line = cursor.peek();

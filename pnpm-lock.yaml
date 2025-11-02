@@ -6,7 +6,7 @@ settings:
 
 patchedDependencies:
   '@toon-format/toon':
-    hash: a1ccf3fe312e238fb7e6148caf82d0b214c273c2ce958e654835fcd95dfa722e
+    hash: 881179ab9b5520be6daf4ff02d0df2a10f60cafdafce8a075858f807c43ac12f
     path: patches/@toon-format__toon.patch
 
 importers:
@@ -18,7 +18,7 @@ importers:
         version: 1.20.2
       '@toon-format/toon':
         specifier: ^0.7.0
-        version: 0.7.0(patch_hash=a1ccf3fe312e238fb7e6148caf82d0b214c273c2ce958e654835fcd95dfa722e)
+        version: 0.7.0(patch_hash=881179ab9b5520be6daf4ff02d0df2a10f60cafdafce8a075858f807c43ac12f)
       apiful:
         specifier: ^4.0.0
         version: 4.0.0(openapi-typescript@7.10.1(typescript@5.9.3))
@@ -3009,7 +3009,7 @@ snapshots:
       consola: 3.4.2
       tokenx: 1.2.0
 
-  '@toon-format/toon@0.7.0(patch_hash=a1ccf3fe312e238fb7e6148caf82d0b214c273c2ce958e654835fcd95dfa722e)': {}
+  '@toon-format/toon@0.7.0(patch_hash=881179ab9b5520be6daf4ff02d0df2a10f60cafdafce8a075858f807c43ac12f)': {}
 
   '@tybys/wasm-util@0.10.1':
     dependencies:
