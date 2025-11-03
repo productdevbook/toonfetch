@@ -68,7 +68,8 @@
     "@modelcontextprotocol/sdk": "^1.20.2",
     "apiful": "^4.0.0",
     "oxc-parser": "^0.96.0",
-    "zod": "^4.1.12"
+    "zod": "3.25.76",
+    "zod-to-json-schema": "3.24.6"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^6.2.0",
