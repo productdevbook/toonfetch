@@ -90,7 +90,7 @@ export function loadConfig(): ServerConfig {
     },
 
     server: {
-      name: 'toonfetch-mcp',
+      name: 'sufetch-mcp',
       version: '0.3.0',
     },
 

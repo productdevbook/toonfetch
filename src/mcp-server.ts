@@ -798,9 +798,9 @@ ${spec.spec.info?.description || ''}
 ## Installation
 
 \`\`\`bash
-npm install toonfetch
+npm install sufetch
 # or
-pnpm add toonfetch
+pnpm add sufetch
 \`\`\`
 
 ## Complete Example
@@ -846,7 +846,7 @@ ${quickstart}
               role: 'user',
               content: {
                 type: 'text',
-                text: `Generate a quickstart guide for the ${spec.spec.info?.title || api_name} API using toonfetch. Include:
+                text: `Generate a quickstart guide for the ${spec.spec.info?.title || api_name} API using sufetch. Include:
 1. Installation instructions
 2. Basic client setup with authentication
 3. 3-5 common use cases with complete code examples
@@ -895,7 +895,7 @@ Description: ${spec.spec.info?.description || 'No description available'}`,
 **Description**: ${operation.description || 'No description'}
 
 Please provide:
-1. Complete TypeScript code example using toonfetch
+1. Complete TypeScript code example using sufetch
 2. Explanation of all required and optional parameters
 3. Expected response structure
 4. Common error cases and how to handle them
@@ -1218,11 +1218,11 @@ Use \`search_endpoints\` to find relevant endpoints, then \`get_endpoint_details
 
     // 2. Generate imports (include type helper import for type safety)
     const packageName = apiName.split('/')[0]
-    let imports = `import { createClient, ${serviceName} } from 'toonfetch/${packageName}'`
+    let imports = `import { createClient, ${serviceName} } from 'sufetch/${packageName}'`
 
     // Add type helper import if we have type definitions
     if (typeDefs.length > 0) {
-      imports += `\nimport type { ${typeHelperName} } from 'toonfetch/${packageName}'`
+      imports += `\nimport type { ${typeHelperName} } from 'sufetch/${packageName}'`
     }
 
     imports += typeDefsStr
@@ -1337,7 +1337,7 @@ Use \`search_endpoints\` to find relevant endpoints, then \`get_endpoint_details
     const baseUrl = spec.servers?.[0]?.url || 'https://api.example.com'
 
     const setupParts = [
-      `import { createClient, ${serviceName} } from 'toonfetch/${packageName}'`,
+      `import { createClient, ${serviceName} } from 'sufetch/${packageName}'`,
       '',
       'const client = createClient({',
       `  baseURL: '${baseUrl}',`,

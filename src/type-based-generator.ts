@@ -83,7 +83,7 @@ export class TypeBasedGenerator {
     const setupCode = [
       'const client = createClient({',
       `  baseURL: 'https://api.example.com', // Replace with actual base URL`,
-      '}).with(' + serviceName + ')',
+      `}).with(${serviceName})`,
     ].join('\n')
 
     // Generate usage code
@@ -97,7 +97,7 @@ export class TypeBasedGenerator {
       usageParts.push('')
     }
 
-    usageParts.push('const response = await client(\'' + path + '\', {')
+    usageParts.push(`const response = await client('${path}', {`)
     usageParts.push(`  method: '${method.toUpperCase()}',`)
 
     if (hasQuery) {
