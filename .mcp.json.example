@@ -1,8 +1,8 @@
 {
   "mcpServers": {
-    "toonfetch": {
+    "sufetch": {
       "command": "npx",
-      "args": ["-y", "toonfetch-mcp"],
+      "args": ["-y", "sufetch-mcp"],
       "env": {}
     }
   }
