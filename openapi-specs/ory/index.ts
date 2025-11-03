@@ -21,7 +21,7 @@ export type {
  *
  * @example
  * ```typescript
- * import { createClient, kratos } from 'toonfetch/ory'
+ * import { createClient, kratos } from 'sufetch/ory'
  *
  * const client = createClient({
  *   baseURL: 'https://your-kratos-instance.com',
@@ -47,7 +47,7 @@ export { apifulCreateClient as createClient }
  *
  * @example
  * ```typescript
- * import { createClient, kratos } from 'toonfetch/ory'
+ * import { createClient, kratos } from 'sufetch/ory'
  *
  * const client = createClient({
  *   baseURL: 'https://your-kratos-instance.com'
@@ -93,7 +93,7 @@ export const kratos: ReturnType<typeof OpenAPIBuilder<'oryKaratos'>> = OpenAPIBu
  *
  * @example
  * ```typescript
- * import { createClient, hydra } from 'toonfetch/ory'
+ * import { createClient, hydra } from 'sufetch/ory'
  *
  * const client = createClient({
  *   baseURL: 'https://your-hydra-instance.com'
@@ -138,7 +138,7 @@ export const hydra: ReturnType<typeof OpenAPIBuilder<'oryHydra'>> = OpenAPIBuild
  *
  * @example
  * ```typescript
- * import ory from 'toonfetch/ory'
+ * import ory from 'sufetch/ory'
  *
  * const kratosClient = createClient({ baseURL: '...' }).with(ory.kratos)
  * const hydraClient = createClient({ baseURL: '...' }).with(ory.hydra)

@@ -324,7 +324,7 @@ export async function oauth2ClientLifecycle(): Promise<void> {
 
 async function main() {
   console.log('🚀 ToonFetch Ory Services Playground\n')
-  console.log('📝 This playground demonstrates type-safe API calls using toonfetch\n')
+  console.log('📝 This playground demonstrates type-safe API calls using sufetch\n')
 
   // Check if real endpoints are configured
   const hasRealEndpoints = process.env.KRATOS_BASE_URL || process.env.HYDRA_BASE_URL

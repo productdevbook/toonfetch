@@ -1,6 +1,6 @@
-# Contributing to ToonFetch
+# Contributing to SuFetch
 
-Thank you for your interest in contributing to ToonFetch! This document provides guidelines and instructions for contributing.
+Thank you for your interest in contributing to SuFetch! This document provides guidelines and instructions for contributing.
 
 ## Table of Contents
 
@@ -50,14 +50,14 @@ We are committed to providing a welcoming and inspiring community for all. Pleas
 2. Clone your fork locally:
 
 ```bash
-git clone https://github.com/productdevbook/toonfetch.git
-cd toonfetch
+git clone https://github.com/productdevbook/sufetch.git
+cd sufetch
 ```
 
 3. Add the upstream repository:
 
 ```bash
-git remote add upstream https://github.com/original/toonfetch.git
+git remote add upstream https://github.com/original/sufetch.git
 ```
 
 ### Install Dependencies
@@ -359,7 +359,7 @@ git push origin feature/your-feature-name
    - **Description**: What does this PR do?
    - **Motivation**: Why is this change needed?
    - **Testing**: How was this tested?
-   - **Screenshots**: If UI changes (not applicable for ToonFetch)
+   - **Screenshots**: If UI changes (not applicable for SuFetch)
    - **Checklist**: Complete the checklist
 
 ### PR Title Format
@@ -476,7 +476,7 @@ Follow the [Pull Request Process](#pull-request-process) above.
 Understanding the project structure helps you navigate and contribute:
 
 ```
-toonfetch/
+sufetch/
 ├── .github/              # GitHub Actions (future)
 ├── src/
 │   └── mcp-server.ts     # MCP server implementation
@@ -524,8 +524,8 @@ toonfetch/
 ## Questions?
 
 - Check [CLAUDE.md](./CLAUDE.md) for detailed project documentation
-- Search [existing issues](https://github.com/productdevbook/toonfetch/issues)
-- Create a [new discussion](https://github.com/productdevbook/toonfetch/discussions)
+- Search [existing issues](https://github.com/productdevbook/sufetch/issues)
+- Create a [new discussion](https://github.com/productdevbook/sufetch/discussions)
 
 ## License
 
@@ -533,4 +533,4 @@ By contributing, you agree that your contributions will be licensed under the MI
 
 ---
 
-**Thank you for contributing to ToonFetch!** 🎉
+**Thank you for contributing to SuFetch!** 🎉

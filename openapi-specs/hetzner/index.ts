@@ -12,7 +12,7 @@ export type { HetznerCloud, HetznerCloudApiMethods, HetznerCloudApiPaths, Hetzne
  *
  * @example
  * ```typescript
- * import { createClient, cloud } from 'toonfetch/hetzner'
+ * import { createClient, cloud } from 'sufetch/hetzner'
  *
  * const client = createClient({
  *   baseURL: 'https://api.hetzner.cloud/v1',
@@ -38,7 +38,7 @@ export { apifulCreateClient as createClient }
  *
  * @example
  * ```typescript
- * import { createClient, cloud } from 'toonfetch/hetzner'
+ * import { createClient, cloud } from 'sufetch/hetzner'
  *
  * const client = createClient({
  *   baseURL: 'https://api.hetzner.cloud/v1',
@@ -79,7 +79,7 @@ export const cloud: ReturnType<typeof OpenAPIBuilder<'hetznerCloud'>> = OpenAPIB
  *
  * @example
  * ```typescript
- * import hetzner from 'toonfetch/hetzner'
+ * import hetzner from 'sufetch/hetzner'
  *
  * const client = createClient({ baseURL: '...' }).with(hetzner.cloud)
  * ```

@@ -12,7 +12,7 @@ export type { DigitalOcean, DigitalOceanApiMethods, DigitalOceanApiPaths, Digita
  *
  * @example
  * ```typescript
- * import { createClient, api } from 'toonfetch/digitalocean'
+ * import { createClient, api } from 'sufetch/digitalocean'
  *
  * const client = createClient({
  *   baseURL: 'https://api.digitalocean.com/v2',
@@ -38,7 +38,7 @@ export { apifulCreateClient as createClient }
  *
  * @example
  * ```typescript
- * import { createClient, api } from 'toonfetch/digitalocean'
+ * import { createClient, api } from 'sufetch/digitalocean'
  *
  * const client = createClient({
  *   baseURL: 'https://api.digitalocean.com/v2',
@@ -79,7 +79,7 @@ export const api: ReturnType<typeof OpenAPIBuilder<'digitalOcean'>> = OpenAPIBui
  *
  * @example
  * ```typescript
- * import digitalocean from 'toonfetch/digitalocean'
+ * import digitalocean from 'sufetch/digitalocean'
  *
  * const client = createClient({ baseURL: '...' }).with(digitalocean.api)
  * ```

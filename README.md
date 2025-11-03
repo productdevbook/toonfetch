@@ -1,13 +1,13 @@
-[![ToonFetch banner](./.github/assets/banner.svg)](https://github.com/productdevbook/toonfetch)
+[![SuFetch banner](./.github/assets/bannerv2.svg)](https://github.com/productdevbook/sufetch)
 
-# ToonFetch
+# SuFetch
 
 <p>
-  <a href="https://www.npmjs.com/package/toonfetch"><img src="https://img.shields.io/npm/v/toonfetch.svg?style=flat&colorA=18181B&colorB=28CF8D" alt="Version"></a>
-  <a href="https://www.npmjs.com/package/toonfetch"><img src="https://img.shields.io/npm/dm/toonfetch.svg?style=flat&colorA=18181B&colorB=28CF8D" alt="Downloads"></a>
-  <a href="https://github.com/productdevbook/toonfetch/blob/main/LICENSE"><img src="https://img.shields.io/github/license/productdevbook/toonfetch.svg?style=flat&colorA=18181B&colorB=28CF8D" alt="License"></a>
+  <a href="https://www.npmjs.com/package/sufetch"><img src="https://img.shields.io/npm/v/sufetch.svg?style=flat&colorA=18181B&colorB=28CF8D" alt="Version"></a>
+  <a href="https://www.npmjs.com/package/sufetch"><img src="https://img.shields.io/npm/dm/sufetch.svg?style=flat&colorA=18181B&colorB=28CF8D" alt="Downloads"></a>
+  <a href="https://github.com/productdevbook/sufetch/blob/main/LICENSE"><img src="https://img.shields.io/github/license/productdevbook/sufetch.svg?style=flat&colorA=18181B&colorB=28CF8D" alt="License"></a>
   <a href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/TypeScript-5.7-18181B?style=flat&logo=typescript&colorB=3178C6" alt="TypeScript"></a>
-  <a href="https://github.com/productdevbook/toonfetch"><img src="https://img.shields.io/badge/MCP%20Server-18181B?style=flat&logo=data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTIgMkw0IDdWMTdMMTIgMjJMMjAgMTdWN0wxMiAyWiIgc3Ryb2tlPSIjRkZGIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48L3N2Zz4=&colorB=28CF8D" alt="MCP Server"></a>
+  <a href="https://github.com/productdevbook/sufetch"><img src="https://img.shields.io/badge/MCP%20Server-18181B?style=flat&logo=data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTIgMkw0IDdWMTdMMTIgMjJMMjAgMTdWN0wxMiAyWiIgc3Ryb2tlPSIjRkZGIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48L3N2Zz4=&colorB=28CF8D" alt="MCP Server"></a>
 </p>
 
 > Type-safe OpenAPI clients with MCP server for AI-driven API exploration
@@ -20,9 +20,9 @@
 
 ---
 
-## What is ToonFetch?
+## What is SuFetch?
 
-ToonFetch combines two powerful tools:
+SuFetch combines two powerful tools:
 
 1. **Type-Safe API Clients** - Generate fully-typed TypeScript clients from OpenAPI specifications
 2. **MCP Server** - Let AI assistants (like Claude) explore your APIs and generate code
@@ -44,30 +44,30 @@ Built with [apiful](https://github.com/lisnote/apiful) and [TOON format](https:/
 
 ```bash
 # npm
-npm install toonfetch
+npm install sufetch
 
 # pnpm
-pnpm add toonfetch
+pnpm add sufetch
 
 # yarn
-yarn add toonfetch
+yarn add sufetch
 ```
 
 ### For MCP Server (Global)
 
 ```bash
 # Install globally
-npm install -g toonfetch
+npm install -g sufetch
 
 # Verify installation
-toonfetch-mcp --version
+sufetch-mcp --version
 ```
 
 ### For Development
 
 ```bash
-git clone https://github.com/productdevbook/toonfetch.git
-cd toonfetch
+git clone https://github.com/productdevbook/sufetch.git
+cd sufetch
 pnpm install
 pnpm build
 ```
@@ -77,7 +77,7 @@ pnpm build
 ### Using the Type-Safe API Client
 
 ```typescript
-import { createClient, cloud } from 'toonfetch/hetzner'
+import { createClient, cloud } from 'sufetch/hetzner'
 
 // Create a typed client
 const client = createClient({
@@ -103,7 +103,7 @@ See [Supported APIs](#supported-apis) for all available services.
 Extract specific types from endpoints for maximum type safety:
 
 ```typescript
-import type { HetznerCloud } from 'toonfetch/hetzner'
+import type { HetznerCloud } from 'sufetch/hetzner'
 
 // Extract request body type
 type CreateServerBody = HetznerCloud<'/servers', 'post'>['request']
@@ -147,14 +147,14 @@ See the [MCP Server Setup](#mcp-server-setup) section below.
 
 ## Supported APIs
 
-ToonFetch currently includes:
+SuFetch currently includes:
 
 | API | Description | Endpoints | Import |
 |-----|-------------|-----------|--------|
-| **DigitalOcean** | Complete cloud platform API | 200+ | `toonfetch/digitalocean` |
-| **Hetzner Cloud** | Cloud infrastructure management | 100+ | `toonfetch/hetzner` |
-| **Ory Kratos** | Identity & user management | 50+ | `toonfetch/ory` |
-| **Ory Hydra** | OAuth 2.0 & OpenID Connect | 40+ | `toonfetch/ory` |
+| **DigitalOcean** | Complete cloud platform API | 200+ | `sufetch/digitalocean` |
+| **Hetzner Cloud** | Cloud infrastructure management | 100+ | `sufetch/hetzner` |
+| **Ory Kratos** | Identity & user management | 50+ | `sufetch/ory` |
+| **Ory Hydra** | OAuth 2.0 & OpenID Connect | 40+ | `sufetch/ory` |
 
 **Want to add more?** See [Adding New APIs](#adding-new-apis).
 
@@ -164,8 +164,8 @@ ToonFetch currently includes:
 
 **1. Install (choose one):**
 ```bash
-npm install -g toonfetch  # Global
-npx toonfetch-mcp         # No install
+npm install -g sufetch  # Global
+npx sufetch-mcp         # No install
 ```
 
 **2. Configure:**
@@ -180,8 +180,8 @@ Edit config file:
 ```json
 {
   "mcpServers": {
-    "toonfetch": {
-      "command": "toonfetch-mcp"
+    "sufetch": {
+      "command": "sufetch-mcp"
     }
   }
 }
@@ -194,15 +194,15 @@ Restart Claude Desktop.
 <summary><b>Claude Code CLI</b> (click to expand)</summary>
 
 ```bash
-claude mcp add --transport stdio --scope project toonfetch -- toonfetch-mcp
+claude mcp add --transport stdio --scope project sufetch -- sufetch-mcp
 ```
 
 Or create `.mcp.json`:
 ```json
 {
   "mcpServers": {
-    "toonfetch": {
-      "command": "toonfetch-mcp"
+    "sufetch": {
+      "command": "sufetch-mcp"
     }
   }
 }
@@ -210,7 +210,7 @@ Or create `.mcp.json`:
 </details>
 
 **3. Test:**
-Ask Claude: "List available APIs using toonfetch"
+Ask Claude: "List available APIs using sufetch"
 
 ### Available MCP Tools
 
@@ -234,7 +234,7 @@ Ask Claude: "List available APIs using toonfetch"
 3. Copy `apiful.config.ts` and `index.ts` from `openapi-specs/ory/` as template
 4. Run `pnpm build`
 
-Done! Your API is now available as `toonfetch/myapi` and in the MCP server.
+Done! Your API is now available as `sufetch/myapi` and in the MCP server.
 
 See [CLAUDE.md](./CLAUDE.md) for detailed instructions.
 </details>
@@ -257,7 +257,7 @@ See [CLAUDE.md](./CLAUDE.md) for architecture, build pipeline, and contribution 
 
 ```bash
 # Test server works
-toonfetch-mcp  # Should output: "ToonFetch MCP server running on stdio"
+sufetch-mcp  # Should output: "SuFetch MCP server running on stdio"
 
 # Check config
 claude mcp list  # For Claude Code
@@ -276,7 +276,7 @@ pnpm install && pnpm build
 ```
 </details>
 
-**Still stuck?** [Open an issue](https://github.com/productdevbook/toonfetch/issues) with your Node version and error message.
+**Still stuck?** [Open an issue](https://github.com/productdevbook/sufetch/issues) with your Node version and error message.
 
 ## Why TOON Format?
 
@@ -300,8 +300,8 @@ Learn more: [TOON Format](https://github.com/toon-format/toon)
 Contributions welcome! See [CONTRIBUTING.md](./CONTRIBUTING.md).
 
 ```bash
-git clone https://github.com/productdevbook/toonfetch.git
-cd toonfetch
+git clone https://github.com/productdevbook/sufetch.git
+cd sufetch
 pnpm install && pnpm build
 # Make changes, run `pnpm test && pnpm lint:fix`
 ```

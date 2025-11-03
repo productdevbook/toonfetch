@@ -60,7 +60,7 @@ const config: ViteUserConfigExport = defineConfig({
   // Resolve aliases (matches tsconfig paths)
   resolve: {
     alias: {
-      'toonfetch/ory': resolve(__dirname, './openapi-specs/ory'),
+      'sufetch/ory': resolve(__dirname, './openapi-specs/ory'),
     },
   },
 })
