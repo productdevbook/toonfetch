@@ -1,5 +1,2 @@
 packages:
   - playground
-
-patchedDependencies:
-  '@toon-format/toon': patches/@toon-format__toon.patch

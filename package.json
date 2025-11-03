@@ -68,11 +68,11 @@
     "@modelcontextprotocol/sdk": "^1.20.2",
     "apiful": "^4.0.0",
     "oxc-parser": "^0.96.0",
-    "zod": "^3.25.76"
+    "zod": "^4.1.12"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^6.2.0",
-    "@types/node": "^24.9.2",
+    "@types/node": "^24.10.0",
     "bumpp": "^10.3.1",
     "eslint": "^9.39.0",
     "openapi-types": "^12.1.3",

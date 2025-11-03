@@ -34,8 +34,6 @@ const config: UserConfig | UserConfigFn = defineConfig({
   },
   dts: true,
   outDir: 'dist',
-  // Bundle @toon-format/toon into the build to include our patches
-  noExternal: ['@toon-format/toon'],
 })
 
 export default config
