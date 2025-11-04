@@ -299,4 +299,4 @@ MIT © 2025
 
 ---
 
-Built with [apiful](https://github.com/lisnote/apiful) · [MCP](https://modelcontextprotocol.io/)
+Built with [apiful](https://github.com/johannschopplich/apiful) · [MCP](https://modelcontextprotocol.io/)
